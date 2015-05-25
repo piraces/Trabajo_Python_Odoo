@@ -1,6 +1,11 @@
 
 
     import erppeek
+    from __future__ import print_function
+    SERVER = 'http://localhost:8069'
+    DATABASE = 'desarrollo'
+    USERNAME = 'companyfirebird@gmail.com'
+    PASSWORD = 'platano-1'
 
 La documentación necesaria para poder superar este ejercicio se encuentra en la documentación de [ERPpeek](http://erppeek.readthedocs.org/en/latest/tutorial.html)
 
@@ -11,9 +16,6 @@ La documentación necesaria para poder superar este ejercicio se encuentra en la
 Demuestra que sabes conectarte a una instancia de Odoo y listar todas sus bases de datos. 
 
 
-    import erppeek
-    from __future__ import print_function
-    SERVER = 'http://localhost:8069'
     client = erppeek.Client(server=SERVER)
     
     for database in client.db.list():
@@ -28,14 +30,6 @@ Demuestra que sabes conectarte a una instancia de Odoo y listar todas sus bases 
 Demuestra que puedes imprimir el `id` y el nombre de todos los usuarios (son registros del modelo `res.users`).
 
 
-    import erppeek
-    from __future__ import print_function
-    
-    SERVER = 'http://localhost:8069'
-    DATABASE = 'desarrollo'
-    USERNAME = 'companyfirebird@gmail.com'
-    PASSWORD = 'platano-1'
-    
     client = erppeek.Client(SERVER, DATABASE, USERNAME, PASSWORD)
     
     proxy = client.model('res.users')
@@ -59,11 +53,7 @@ Demuestra que puedes imprimir el `id` y el nombre de todos los usuarios (son reg
 Demuestra que sabes crear una base de datos, listar todos los módulos instalados por defecto, y si no está presente un módulo determinado instalarlo.
 
 
-    import erppeek
-    from __future__ import print_function
-    
     DATABASE = 'trabajoPython'
-    SERVER = 'http://localhost:8069'
     ADMIN_PASSWORD = 'admin'
     
     client = erppeek.Client(server=SERVER)
@@ -133,22 +123,14 @@ Demuestra que sabes crear una base de datos, listar todos los módulos instalado
 Demuesta que sabes listar todos los campos  del modelo `res.users`, incluyendo nombre, tipo y etiqueta
 
 
-    import erppeek
-    from __future__ import print_function
-    
-    SERVER = 'http://localhost:8069'
     DATABASE = 'desarrollo'
-    USERNAME = 'companyfirebird@gmail.com'
-    PASSWORD = 'platano-1'
-    
     client = erppeek.Client(SERVER, DATABASE, USERNAME, PASSWORD)
     
     proxy = client.model('res.users')
     users = proxy.browse([])
     
     for user in users:
-        a = "Usuario: {user.name}, Tipo: {user.type}, Etiqueta (alias): {user.alias_id}".format(user=user)
-        print(a)
+        print("Usuario: {user.name}, Tipo: {user.type}, Etiqueta (alias): {user.alias_id}".format(user=user))
 
     Usuario: Administrator, Tipo: contact, Etiqueta (alias): companyfirebird@gmail.com
     Usuario: Raul Piraces Alastuey, Tipo: contact, Etiqueta (alias): Inactive Alias
@@ -164,10 +146,6 @@ Demuesta que sabes listar todos los campos  del modelo `res.users`, incluyendo n
 Crea el código neccesario para migrar los usuarios de una base de datos a otra base de datos. No es necesario migrar todos los campos. Basta con una prueba de concepto. 
 
 
-    import erppeek
-    from __future__ import print_function
-    
-    SERVER = 'http://localhost:8069'
     DATABASE1 = 'desarrollo'
     DATABASE2 = 'sandbox'
     USERNAME1 = 'companyfirebird@gmail.com'
